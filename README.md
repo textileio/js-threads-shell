@@ -23,7 +23,6 @@ You'll want to use credentials from your `hub` cli.
 You can also specify these values at runtime via cli flags.
 
 ```
-cd some/working/dir
 threads --help
 
 Usage: threads [options]
