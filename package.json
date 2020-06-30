@@ -1,0 +1,72 @@
+{
+  "name": "@textile/threads-shell",
+  "version": "0.0.0",
+  "description": "A repl/shell for interacting with a (remote) threaddb",
+  "main": "./dist/src/shell",
+  "module": "./dist/src/shell",
+  "bin": {
+    "threads": "./dist/bin/shell.js"
+  },
+  "types": "./dist/src/shell",
+  "files": [
+    "./dist/**/!(*.spec).js?(.map)",
+    "./dist/**/!(*.spec).d.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "shell": "./dist/bin/shell.js",
+    "prepublishOnly": "npm run build",
+    "build": "tsc -b tsconfig.json && chmod +x ./dist/bin/shell.js",
+    "clean": "rimraf ./dist ./tsconfig.tsbuildinfo",
+    "watch": "tsc --watch -b tsconfig.json",
+    "lint": "eslint --fix --ext .js,.ts index.ts ./src/**/* ./bin/**/*"
+  },
+  "keywords": [
+    "repl",
+    "threads",
+    "textile",
+    "ipfs",
+    "shell",
+    "development"
+  ],
+  "author": "Textile.io <contact@textile.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@textile/hub": "^0.1.9",
+    "@textile/threads-client": "^0.6.13",
+    "@textile/threads-core": "^0.1.24",
+    "commander": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "isomorphic-ws": "^4.0.1",
+    "ws": "^7.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@types/node": "^14.0.14",
+    "@types/websocket": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "prettier-plugin-organize-imports": "^1.1.0",
+    "typescript": "^3.9.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}
