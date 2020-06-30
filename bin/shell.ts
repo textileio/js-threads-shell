@@ -16,6 +16,7 @@ const config: AppConfig = {
 // Read the values of .env into the environment
 dotenv.config();
 
+prog.name("threads");
 prog.option(
   "-h, --host [host]",
   "Remote Hub host (e.g., https://api.textile.io:3447)"
